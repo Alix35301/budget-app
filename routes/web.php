@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +21,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/new-entry', [app\Http\Controllers\TrackController::class, 'index']);
+Route::get('new-entry', [TrackController::class, 'index'])->middleware(['auth']);
+Route::post('/new-entry',[TrackController::class, 'store'])->middleware(['auth']);
+
 
 require __DIR__.'/auth.php';
+
+

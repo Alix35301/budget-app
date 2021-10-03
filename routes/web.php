@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\TypeaheadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/dashboard', function () {
 Route::get('new-entry', [TrackController::class, 'index'])->middleware(['auth']);
 Route::post('/new-entry',[TrackController::class, 'store'])->middleware(['auth']);
 
+Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteProductSearch']);
 
 require __DIR__.'/auth.php';
 

@@ -26,7 +26,7 @@
                     <form class="w-full max-w-lg" method="POST" action='/new-entry'>
                         @csrf
                         <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3">
+                            <!-- <div class="w-full px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="grid-item-name">
                                     Item Name
@@ -35,31 +35,13 @@
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                      type="text" placeholder="What did you buy?" id ="searchProduct" name="product" class="@error('product') is-invalid @enderror" value="{{ old('product') }}">
                                 
-                                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        var route = "{{ url('autocomplete-search') }}";
-
-        $('#searchProduct').typeahead({
-            source: function (query, process) {
-                return $.get(route, {
-                    query: query
-                }, function (data) {
-                    console.log(process(data));
-                    return process(data);
-                });
-            }
-        });
-    </script>
-
-                                
-                                
                                     @error('product')
                                 <p class="text-red-600 text-xs italic">{{$message}}</p>
 
                                 @enderror
                                 
-                            </div>
+                            </div> -->
+                            <livewire:product-search-dropdown>
                         </div>
                         <div class="w-full max-w-lg">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

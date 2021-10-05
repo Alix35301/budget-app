@@ -25,7 +25,6 @@
 
                     <form class="w-full max-w-lg" method="POST" action='/new-entry'>
                         @csrf
-                        <div class="flex flex-wrap -mx-3 mb-6">
                             <!-- <div class="w-full px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="grid-item-name">
@@ -42,8 +41,7 @@
                                 
                             </div> -->
                             <livewire:product-search-dropdown>
-                        </div>
-                        <div class="w-full max-w-lg">
+                        <div class="w-full w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-category">
                                 Category
@@ -67,7 +65,6 @@
                             @enderror
                         </div>
                         <br />
-                        <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="grid-item-qty">
@@ -80,9 +77,7 @@
                                     <p class="text-red-600 text-xs italic">{{$message}}</p>
                                     @enderror
                                 </div>
-                        </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="grid-item-price">
@@ -95,9 +90,7 @@
                                     <p class="text-red-600 text-xs italic">{{$message}}</p>
                                     @enderror
                                 </div>
-                        </div>
 
-                        <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="grid-shop-name">
@@ -109,10 +102,9 @@
                                     @error('shop_id')
                                     <p class="text-red-600 text-xs italic">{{$message}}</p>
                                     @enderror                            </div>
-                        </div>
 
 
-                        <div class="w-full max-w-lg">
+                        <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                 for="grid-location">
                                 Location

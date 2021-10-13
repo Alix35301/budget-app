@@ -8,7 +8,16 @@
 
 
 
+
     <div class="py-5">
+    @if(session()->has('message'))
+
+
+    <div class="text-center w-full bg-green-100 border-t border-b border-green-500 text-green-700 px-4 py-3" role="alert">
+  <p class="font-bold">Yay! It's saved ;) </p>
+
+    </div>
+@endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- @if ($errors->any())
     <div div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
@@ -127,6 +136,13 @@
 
                             @enderror
                         </div>
+
+<input class="form-select" list="list" />
+<datalist id="list">
+  <option value="1">First one</option>
+  <option value="2">Second one</option>
+</datalist>
+<input type="search" list="list">
                         <br>
 
                         <button type="submit"

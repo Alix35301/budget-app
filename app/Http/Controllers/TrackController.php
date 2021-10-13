@@ -35,18 +35,19 @@ class TrackController extends Controller
 
         // \App\Models\Track::create($request->all());
         $product = $request->old('product');
-
+        // dd($validated);
         $item = new \App\Models\Track([
-            'product' => $request->get('product'),
-            'category_id' => $request->get('category_id'),
-            'qty' => $request->get('qty'),
+            'product' => $validated['product'],
+            'category_id' => $validated['category_id'],
+            'qty' => $validated['qty'],
             'user_id' => Auth::user()->id,
-            'location' => $request->get('radio'),
-            'shop_id' => $request->get('shop_id'),
-            'price' => $request->get('price')
+            'location' => $validated['location'],
+            'shop_id' => $validated['shop_id'],
+            'price' => $validated['price']
 
         ]);
-        $validated->save();
+        $item->save();
+        return redirect()->back()->with('message', 'IT WORKS!');
 
     }
 

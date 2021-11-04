@@ -21,33 +21,40 @@ class TrackController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'product' => 'required',
-            'qty' => 'required',
-            'category_id' => 'required',
-            'price' => 'required',
-            'shop_id' => 'required',
-            'location' => 'required'
-
-
-
-        ]);
+        $data = $request->all();
+        // dd($data);
+        // $validated = $request->validate([
+        //     'product' => 'required',
+        //     'qty' => 'required',
+        //     'category_id' => 'required',
+        //     'price' => 'required',
+        //     'shop_id' => 'required',
+        //     'location' => 'required'
+        // ]);
 
         // \App\Models\Track::create($request->all());
-        $product = $request->old('product');
+        // $product = $request->old('product');
         // dd($validated);
+        $shop_id = \App\Models\Shop::where("name","=",$data['shop_id'])->pluck("id")->first();
+        $product_id = \App\Models\Product::where("name","=",$data['product'])->pluck("id")->first();
+// dd($shop_id);
         $item = new \App\Models\Track([
-            'product' => $validated['product'],
-            'category_id' => $validated['category_id'],
-            'qty' => $validated['qty'],
+            'date' => $data["date"],
+            'product' => $product_id,
+            'category_id' => $data['category_id'],
+            'qty' => $data['qty'],
             'user_id' => Auth::user()->id,
-            'location' => $validated['location'],
-            'shop_id' => $validated['shop_id'],
-            'price' => $validated['price']
+            'location' => $data['location'],
+            'shop_id' => $shop_id,
+            'price' => $data['price']
 
         ]);
+        // dd($item);
+
         $item->save();
         return redirect()->back()->with('message', 'IT WORKS!');
+        // todo 1. ability to chose , amount , kgs etx.. 
+
 
     }
 

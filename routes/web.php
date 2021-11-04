@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrackController;
+
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TypeaheadController;
 
 /*
@@ -14,16 +16,25 @@ use App\Http\Controllers\TypeaheadController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-Route::get('new-entry', [TrackController::class, 'index'])->middleware(['auth']);
-Route::post('/new-entry',[TrackController::class, 'store'])->middleware(['auth']);
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
+// DashboardController
+
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+
+Route::get('new-entry', [TrackController::class, 'index'])->middleware(['auth'])->name('newEntry');
+Route::post('/add',[TrackController::class, 'store'])->middleware(['auth']);
 
 Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteProductSearch']);
 

@@ -46,7 +46,7 @@
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-center">Balance</div>
                             <p class="text-4xl text-gray-700 text-base text-center py-8">
-                                MVR 25,000
+                                MVR {{$balance}}
                             </p>
                         </div>
 

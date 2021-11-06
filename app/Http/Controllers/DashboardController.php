@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Track;
+use \App\Models\Income;
 use Carbon\Carbon;
+use Auth;
 class DashboardController extends Controller
 {
 
@@ -16,13 +18,19 @@ class DashboardController extends Controller
 
         // // dd($cats);
         // return view('new',compact(['header','cats','locs']));
+        $user_id = Auth::user()->id;
+        $income = Income::select('*')->where('user_id',$user_id)->sum(\DB::raw('amount'));
         $cats = \App\Models\Track::all();
         $date = Carbon::now();
-        $curMonExp = Track::select('*')->whereMonth('date', $date->month)->sum(\DB::raw('tracks.price * tracks.qty'));
+        $curMonExp = Track::select('*')->where('user_id',$user_id)->whereMonth('date', $date->month)->sum(\DB::raw('tracks.price * tracks.qty'));
 
         $day = ((int)$date->format('d'));
         $prevMonth = ((int)$date->format('m'))-1;
         $year = ((int)$date->format('Y'));
+
+        $balance = $income - $curMonExp;
+        // dd($balance);
+
 
 
         // dd($prevMonth); 
@@ -34,7 +42,7 @@ class DashboardController extends Controller
         $to = Carbon::parse($day.'-'.$prevMonth.'-'. $year) ;
         $from = Carbon::parse('1-'.$prevMonth.'-'. $year) ; 
 
-       $lastMonExp =  Track::whereBetween('date', [$from, $to])->sum(\DB::raw('tracks.price * tracks.qty'));
+       $lastMonExp =  Track::where('user_id',$user_id)->whereBetween('date', [$from, $to])->sum(\DB::raw('tracks.price * tracks.qty'));
 
     //    dd([$lastMonExp,$curMonExp]);
 
@@ -56,7 +64,7 @@ class DashboardController extends Controller
 
 
 
-        return view('dashboard', compact(["curMonExp","perChange"]));
+        return view('dashboard', compact(["curMonExp","perChange","balance"]));
 
 
     }

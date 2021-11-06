@@ -4,6 +4,8 @@ use App\Http\Controllers\TrackController;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TypeaheadController;
+use App\Http\Controllers\IncomeTypeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,9 @@ use App\Http\Controllers\TypeaheadController;
 // DashboardController
 
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('add-income', [IncomeTypeController::class, 'index'])->middleware(['auth'])->name('add-income');
+Route::post('/add-income',[IncomeTypeController::class, 'store'])->middleware(['auth']);
+
 
 
 Route::get('new-entry', [TrackController::class, 'index'])->middleware(['auth'])->name('newEntry');

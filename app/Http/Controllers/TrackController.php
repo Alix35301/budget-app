@@ -43,7 +43,8 @@ class TrackController extends Controller
             'product' => $product_id,
             'category_id' => $data['category_id'],
             'qty' => $data['qty'],
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
+            'user_id' => 1,
             'location' => $data['location'],
             'shop_id' => $shop_id,
             'price' => $data['price']

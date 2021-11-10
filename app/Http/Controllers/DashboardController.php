@@ -18,7 +18,9 @@ class DashboardController extends Controller
 
         // // dd($cats);
         // return view('new',compact(['header','cats','locs']));
-        $user_id = Auth::user()->id;
+        // $user_id = Auth::user()->id;
+        $user_id = 1;
+
         $income = Income::select('*')->where('user_id',$user_id)->sum(\DB::raw('amount'));
         $cats = \App\Models\Track::all();
         $date = Carbon::now();

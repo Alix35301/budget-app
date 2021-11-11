@@ -48,7 +48,13 @@ class DashboardController extends Controller
 
     //    dd([$lastMonExp,$curMonExp]);
 
-      $perChange = ((($curMonExp - $lastMonExp )/  $curMonExp) * 100);
+    if ($curMonExp != 0) {
+        $perChange = ((($curMonExp - $lastMonExp )/  $curMonExp) * 100);
+
+    } else{
+        $perChange = 0; 
+    }
+
     //   $perChange = (($curMonExp - $lastMonExp )/  $curMonExp);
 
     // dd([$curMonExp,$lastMonExp]);

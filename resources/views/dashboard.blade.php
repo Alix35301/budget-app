@@ -23,36 +23,39 @@
     
                     </div>
 
-                    <div class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class=" text-xl mb-2 text-left">Expenses</div>
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        <div class="px-6 py-4 m-4">
+                            <div class="text-2xl py-2 text-red-400  font-semibold tracking-wide text-left">Expenses</div>
                             <p class="text-gray-700 text-base text-center">
-                                You have spent <br> <strong> MVR {{number_format( $curMonExp,2)}} </strong> <br> in {{Carbon\Carbon::now()->format('F')}}
-                                <br> {{number_format( $perChange,2)}} %
-                        
-                                @if(number_format( $perChange,2) > 0)
-                                <i class="fas fa-arrow-up"></i>
+                            <p class="text-gray-700  font-bold text-3xl py-1">
+                                 <span class=" text-xl text-gray-600">MVR </span>
+                                 {{number_format( $curMonExp,2)}} 
+                                 @if(number_format( $perChange,2) == 0)
+                                    <p class= "text-sm text-gray-600"> In {{Carbon\Carbon::now()->format('F')}}</p>
+                                 
+                                 @elseif(number_format( $perChange,2) > 0)
+                                 <p class= "text-sm text-gray-600"> {{number_format( $perChange,2)}} %  <i class="fas fa-arrow-up" style="color:red"></i></span> in {{Carbon\Carbon::now()->format('F')}}</p>
+
+                                 
 
                                 @else
 
-                                <i class="fas fa-arrow-down"></i>
+                                <p class= "text-sm text-gray-600"> {{number_format( $perChange,2)}} %  <i class="fas fa-arrow-down" style="color:green"></i></i></span> </p>
                                 @endif
-                                
-                                
-                                
                             </p>
                         </div>
 
                     </div>
 
-                    <div class="rounded overflow-hidden shadow-lg">
-                        <div class="px-6 py-4">
-                            <div class=" text-xl mb-2 text-left">Balance</div>
-                            <p class=text-gray-700 text-base text-center py-8">
-                                MVR {{$balance}}
-                            </p>
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        <div class="px-6 py-4 m-4">
+                            <div class="text-2xl py-2 text-green-300  font-semibold tracking-wide text-left">Balance</div>
+                            <p class="text-gray-700  font-bold text-3xl py-1">
+                                 <span class=" text-xl text-gray-600">MVR </span>
+                                 {{$balance}}                            </p>
+                            
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>

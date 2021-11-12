@@ -52,7 +52,7 @@ Route::get('add-saving', [AddSavingsController::class, 'index'])->name('add-savi
 
 
 
-
+Route::view("charts","charts");
 
 Route::get('new-entry', [TrackController::class, 'index'])->name('newEntry');
 Route::post('/add',[TrackController::class, 'store']);

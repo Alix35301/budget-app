@@ -12,54 +12,84 @@
                     <!--Card 1-->
                     <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
                         <div class="px-6 py-4 m-4">
-                            <div class=" text-2xl py-2 text-blue-500  font-semibold tracking-wide text-left">Savings</div>
+                            <div class=" text-2xl py-2 text-blue-500  font-semibold tracking-wide text-left">Savings
+                            </div>
                             <p class="text-gray-700  font-bold text-3xl py-1">
-                                 <span class=" text-xl text-gray-600">MVR </span>
-                                 19,000.00
+                                <span class=" text-xl text-gray-600">MVR </span>
+                                19,000.00
                             </p>
-                            <p class= "text-sm text-gray-600">Goal <span><i class="fas fa-arrow-right"></i></span> 19,000 (100%) <span> <i class="fas fa-check" style="color:green"></i></span> </p>
+                            <p class="text-sm text-gray-600">Goal <span><i class="fas fa-arrow-right"></i></span> 19,000
+                                (100%) <span> <i class="fas fa-check" style="color:green"></i></span> </p>
                             <!-- <i class="fas fa-times"></i> -->
                         </div>
-    
-                    </div>
-
-                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
-                        <div class="px-6 py-4 m-4">
-                            <div class="text-2xl py-2 text-red-400  font-semibold tracking-wide text-left">Expenses</div>
-                            <p class="text-gray-700 text-base text-center">
-                            <p class="text-gray-700  font-bold text-3xl py-1">
-                                 <span class=" text-xl text-gray-600">MVR </span>
-                                 {{number_format( $curMonExp,2)}} 
-                                 @if(number_format( $perChange,2) == 0)
-                                    <p class= "text-sm text-gray-600"> In {{Carbon\Carbon::now()->format('F')}}</p>
-                                 
-                                 @elseif(number_format( $perChange,2) > 0)
-                                 <p class= "text-sm text-gray-600"> {{number_format( $perChange,2)}} %  <i class="fas fa-arrow-up" style="color:red"></i></span> in {{Carbon\Carbon::now()->format('F')}}</p>
-
-                                 
-
-                                @else
-
-                                <p class= "text-sm text-gray-600"> {{number_format( $perChange,2)}} %  <i class="fas fa-arrow-down" style="color:green"></i></i></span> </p>
-                                @endif
-                            </p>
-                        </div>
 
                     </div>
 
                     <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
                         <div class="px-6 py-4 m-4">
-                            <div class="text-2xl py-2 text-green-300  font-semibold tracking-wide text-left">Balance</div>
-                            <p class="text-gray-700  font-bold text-3xl py-1">
-                                 <span class=" text-xl text-gray-600">MVR </span>
-                                 {{$balance}}                            </p>
-                            
+                            <div class="text-2xl py-2 text-red-400  font-semibold tracking-wide text-left">Expenses
                             </div>
+                            <p class="text-gray-700 text-base text-center">
+                                <p class="text-gray-700  font-bold text-3xl py-1">
+                                    <span class=" text-xl text-gray-600">MVR </span>
+                                    {{ number_format( $curMonExp,2) }}
+                                    @if(number_format( $perChange,2) == 0)
+                                        <p class="text-sm text-gray-600"> In
+                                            {{ Carbon\Carbon::now()->format('F') }}</p>
+
+                                    @elseif(number_format( $perChange,2) > 0)
+                                        <p class="text-sm text-gray-600"> {{ number_format( $perChange,2) }} % <i
+                                                class="fas fa-arrow-up" style="color:red"></i></span> in
+                                            {{ Carbon\Carbon::now()->format('F') }}</p>
+
+
+
+                                    @else
+
+                                        <p class="text-sm text-gray-600"> {{ number_format( $perChange,2) }} % <i
+                                                class="fas fa-arrow-down" style="color:green"></i></i></span> </p>
+                                    @endif
+                                </p>
                         </div>
+
+                    </div>
+
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        <div class="px-6 py-4 m-4">
+                            <div class="text-2xl py-2 text-green-300  font-semibold tracking-wide text-left">Balance
+                            </div>
+                            <p class="text-gray-700  font-bold text-3xl py-1">
+                                <span class=" text-xl text-gray-600">MVR </span>
+                                {{ $balance }} </p>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        xc
+                        <livewire:category-pie-chart/>
+                    </div>
+
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        <livewire:daily-chart/>
+                    </div>
+
+                    <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
+                        <livewire:product-word-cloud/>
                     </div>
                 </div>
+
+
             </div>
+
         </div>
+
+    </div>
+    </div>
     </div>
 
 

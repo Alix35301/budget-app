@@ -70,7 +70,6 @@
 
 
                     <div class="rounded-xl border-opacity-50 border-2 overflow-hidden shadow-sm">
-                        xc
                         <livewire:category-pie-chart/>
                     </div>
 

@@ -16,13 +16,15 @@ class CreateTracksTable extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
             $table->datetime("date");
-            $table->integer('category_id');
-            $table->string('product');
+            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('product')->unsigned();
             $table->float('qty');
             $table->float('price');
             $table->integer('user_id');
             $table->integer('location');
             $table->integer('shop_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('product')->references('id')->on('products');
             $table->timestamps();
         });
     }

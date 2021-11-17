@@ -1,19 +1,18 @@
-<div class="bg-red-300 mt-4" id="hight-chart">
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<div class="bg-red-300 mt-4" id="dailyExp">
 <script type="text/javascript">
-    Highcharts.chart('hight-chart', {
+    Highcharts.chart('dailyExp', {
         title: {
-            text: 'New User Growth, 2019'
+            text: 'Daily Expenditure'
         },
-        subtitle: {
-            text: 'Source: NiceSnippets.com'
-        },
+        exporting: {
+                enabled: false
+            },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: {!! json_encode($dates) !!}
         },
         yAxis: {
             title: {
-                text: 'Number of New Users'
+                text: 'Total Expenditure (MVR)'
             }
         },
         legend: {
@@ -30,14 +29,10 @@
             }
         },
         series: [{
-                name: 'New User',
-                data: [80, 50, 300, 12],
+                name: 'Daily Expenditure',
+                data: {!! json_encode($data) !!},
                 type: 'line'
-            }, {
-                name: 'New ',
-                data: [-1, 29, 90, 100]
             }
-
 
         ],
         responsive: {

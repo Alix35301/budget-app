@@ -28,6 +28,10 @@
                     <x-nav-link :href="route('add-saving')" :active="request()->routeIs('add-saving')">
                         {{ __('Add To Saving') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('create-account')" :active="request()->routeIs('create-account')">
+                        {{ __('Create Account') }}
+                    </x-nav-link>
+
 
                 </div>
             </div>

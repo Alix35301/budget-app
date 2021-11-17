@@ -7,6 +7,8 @@ use App\Http\Controllers\TypeaheadController;
 use App\Http\Controllers\IncomeTypeController;
 use App\Http\Controllers\SavingsController;
 use App\Http\Controllers\AddSavingsController;
+use App\Http\Controllers\AccountController;
+
 
 
 
@@ -49,6 +51,9 @@ Route::get('add-income', [IncomeTypeController::class, 'index'])->name('add-inco
 Route::post('/add-income',[IncomeTypeController::class, 'store']);
 Route::get('set-saving', [SavingsController::class, 'index'])->name('set-saving');
 Route::get('add-saving', [AddSavingsController::class, 'index'])->name('add-saving');
+Route::get('create-account', [AccountController::class, 'index'])->name('create-account');
+Route::post('create-account',[AccountController::class, 'store']);
+
 
 
 

@@ -52,7 +52,7 @@
                             </option>
                             @foreach($currencies as $currency )
                                 <option value="{{ $currency->id }}">
-                                    {{ $currency->currency_name }}
+                                    {{ $currency->name }}
                                 </option>
                             @endforeach
                  
@@ -74,7 +74,7 @@
 
             @foreach ($accounts as $account )
                     <div class="rounded-lg bg-gray-100 py-3 m-3">
-                        <p class="text-center text-green-400"> {{$account->account_name}} - {{Carbon\Carbon::parse($account->created_at)->format('M d Y')}}</p>
+                        <p class="text-center text-green-400"> {{$account->account_name}}({{$account->currency->name}}) - {{Carbon\Carbon::parse($account->created_at)->format('M d Y')}}</p>
                     </div>
                     @endforeach
 

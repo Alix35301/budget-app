@@ -11,14 +11,16 @@ use \App\Models\Currency;
 class AccountController extends Controller
 {
     public function index(){
-        $accounts = Account::all();
+        $accounts = Account::with("currency")->get();
+        // $accounts = Account::find(1)->currency->currency_name;
+
         $currencies = Currency::all();
 
         // dd($accounts);
-        foreach ($accounts as $account){
-            dd($account->currency);
+        // foreach ($accounts as $account){
+        //     dd($account->currency);
             
-        }
+        // }
 
         return view("create_account", compact("accounts","currencies"));
 
@@ -32,7 +34,7 @@ class AccountController extends Controller
         // dd($data);
         $item = new \App\Models\Account([
             'account_name' => $data["accName"],
-            'currency_type' => $data["currencyType"],
+            'currency_id' => $data["currencyType"],
             // 'user_id' => Auth::user()->id,
             'user_id' => 1,
         ]);

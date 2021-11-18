@@ -17,10 +17,8 @@ class CreateAccountsTable extends Migration
             $table->id();
             $table->string("account_name");
             $table->bigInteger("user_id")->unsigned();
-            $table->bigInteger("currency_type")->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('currency_type')->references('id')->on('currencie');
-
+            $table->bigInteger("currency_id")->unsigned()->nullable();
+            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('set null')->onUpdate('set null');
             $table->timestamps();
         });
     }
